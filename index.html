@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Pithila</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffc1da, #ffe8f2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 440px;
+      height: 650px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 2px solid white;
+      box-shadow: 0 15px 40px rgba(194, 24, 91, 0.2);
+    }
+
+    /* Cat pictures */
+
+    .cat {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(190, 50, 100, 0.25);
+      z-index: 2;
+    }
+
+    .cat1 {
+      top: 18px;
+      left: 18px;
+      transform: rotate(-7deg);
+    }
+
+    .cat2 {
+      top: 18px;
+      right: 18px;
+      transform: rotate(7deg);
+    }
+
+    .cat3 {
+      bottom: 18px;
+      left: 18px;
+      transform: rotate(6deg);
+    }
+
+    .cat4 {
+      bottom: 18px;
+      right: 18px;
+      transform: rotate(-6deg);
+    }
+
+    /* Main text */
+
+    .content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 25px;
+      z-index: 3;
+    }
+
+    .heart {
+      font-size: 45px;
+      color: #f04f96;
+      animation: beat 1s infinite;
+    }
+
+    h1 {
+      color: #df397f;
+      font-size: 42px;
+      line-height: 1.1;
+      margin: 15px 0 8px;
+    }
+
+    .name {
+      color: #c2185b;
+      font-size: 50px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .love {
+      color: #d63384;
+      font-size: 23px;
+    }
+
+    .message {
+      margin-top: 18px;
+      color: #df6b9d;
+      font-size: 16px;
+    }
+
+    /* Secret Message Button */
+
+    .secret-btn {
+      position: absolute;
+      bottom: 75px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: #df397f;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+
+      box-shadow: 0 5px 15px rgba(194, 24, 91, 0.25);
+      transition: 0.3s;
+    }
+
+    .secret-btn:hover {
+      background: #c2185b;
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    /* Secret Message Box */
+
+    .secret-message {
+      display: none;
+      position: absolute;
+      z-index: 10;
+
+      width: 82%;
+      max-height: 430px;
+      overflow-y: auto;
+
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      padding: 25px;
+      border-radius: 22px;
+
+      background: white;
+      border: 2px solid #ffc1da;
+      box-shadow: 0 10px 35px rgba(194, 24, 91, 0.25);
+
+      color: #c2185b;
+      font-size: 16px;
+      line-height: 1.7;
+      text-align: left;
+
+      white-space: pre-wrap;
+    }
+
+    .close-btn {
+      display: block;
+      margin: 20px auto 0;
+
+      padding: 9px 20px;
+      border: none;
+      border-radius: 20px;
+
+      background: #df397f;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Floating hearts */
+
+    .floating-heart {
+      position: absolute;
+      bottom: -40px;
+      color: #f04f96;
+      font-size: 25px;
+      opacity: 0;
+      animation: rise 6s linear infinite;
+      z-index: 1;
+    }
+
+    .h1 {
+      left: 8%;
+      animation-delay: 0s;
+    }
+
+    .h2 {
+      left: 25%;
+      font-size: 20px;
+      animation-delay: 2s;
+    }
+
+    .h3 {
+      left: 45%;
+      font-size: 30px;
+      animation-delay: 1s;
+    }
+
+    .h4 {
+      left: 65%;
+      font-size: 20px;
+      animation-delay: 3s;
+    }
+
+    .h5 {
+      left: 82%;
+      font-size: 30px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-700px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes beat {
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 380px) {
+      .container {
+        height: 560px;
+      }
+
+      .cat {
+        width: 70px;
+        height: 70px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .name {
+        font-size: 42px;
+      }
+
+      .love {
+        font-size: 20px;
+      }
+
+      .secret-message {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Cat pictures -->
+
+    <img
+      class="cat cat1"
+      src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=300&q=90"
+      alt="Cute kitten"
+    >
+
+    <img
+      class="cat cat2"
+      src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=300&q=90"
+      alt="Cute cat"
+    >
+
+    <img
+      class="cat cat3"
+      src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=300&q=90"
+      alt="Cute kitten"
+    >
+
+    <img
+      class="cat cat4"
+      src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=300&q=90"
+      alt="Cute cat"
+    >
+
+    <!-- Main birthday message -->
+
+    <div class="content">
+
+      <div class="heart">♥</div>
+
+      <h1>
+        Happy Birthday<br>
+        My Crush
+      </h1>
+
+      <div class="name">
+        Pithila
+      </div>
+
+      <div class="love">
+        I love you so much
+      </div>
+
+      <div class="message">
+        Have a beautiful and happy day ♡
+      </div>
+
+    </div>
+
+    <!-- Secret Message Button -->
+
+    <button class="secret-btn" onclick="showSecret()">
+      Secret Message
+    </button>
+
+    <!-- Secret Message -->
+
+    <div class="secret-message" id="secretMessage">
+
+sotti kotha bolte ami asolei tomake onek valobashi tomake dekle kan jani amar onek valo lage ami ai ta shudhu tomar jonno banayci jate tumi khusi how  ami ato din ja ja shikci jemon (HTML) (CSS) (JavaScript) (Python) (AI) ai ghula ajke kaje laglo amar mone hoy tumi khusi hoba. i thikn tomake kaw ai vabe Surprise day nai. ami jantam na ajke tomar Birthday tomar Story deklam tarpor vablam ekta choto Surprise dei tai ai Website ta banailam tomar jonno sorbo shes e ami bolbo ami tomake valobashi   
+
+      <button class="close-btn" onclick="closeSecret()">
+        Close
+      </button>
+
+    </div>
+
+    <!-- Floating hearts -->
+
+    <span class="floating-heart h1">♥</span>
+    <span class="floating-heart h2">♡</span>
+    <span class="floating-heart h3">♥</span>
+    <span class="floating-heart h4">♡</span>
+    <span class="floating-heart h5">♥</span>
+
+  </div>
+
+  <script>
+    function showSecret() {
+      document.getElementById("secretMessage").style.display = "block";
+    }
+
+    function closeSecret() {
+      document.getElementById("secretMessage").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
